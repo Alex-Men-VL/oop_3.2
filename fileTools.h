@@ -1,5 +1,5 @@
-#ifndef IND_7_FILETOOLS_H
-#define IND_7_FILETOOLS_H
+#ifndef OOP_3_2_FILETOOLS_H
+#define OOP_3_2_FILETOOLS_H
 
 #include <fstream>
 #include <string>
@@ -38,4 +38,4 @@ void printPersonsInFile(TS, int, TP **);
 
 #include "fileTools.tpp"
 
-#endif //IND_7_FILETOOLS_H
+#endif //OOP_3_2_FILETOOLS_H

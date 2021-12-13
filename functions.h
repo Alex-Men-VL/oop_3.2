@@ -1,5 +1,5 @@
-#ifndef IND_7_FUNCTIONS_H
-#define IND_7_FUNCTIONS_H
+#ifndef OOP_3_2_FUNCTIONS_H
+#define OOP_3_2_FUNCTIONS_H
 
 #include <time.h>
 
@@ -10,4 +10,4 @@ bool isNamesakes(int, TP **);
 
 #include "functions.tpp"
 
-#endif //IND_7_FUNCTIONS_H
+#endif //OOP_3_2_FUNCTIONS_H

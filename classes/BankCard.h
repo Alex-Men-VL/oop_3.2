@@ -1,5 +1,5 @@
-#ifndef OOP_BANKCARD_H
-#define OOP_BANKCARD_H
+#ifndef OOP_3_2_BANKCARD_H
+#define OOP_3_2_BANKCARD_H
 
 #include "String.h"
 
@@ -35,4 +35,4 @@ public:
 
 #include "BankCard.tpp"
 
-#endif //OOP_BANKCARD_H
+#endif //OOP_3_2_BANKCARD_H

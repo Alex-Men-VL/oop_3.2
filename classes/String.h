@@ -1,5 +1,5 @@
-#ifndef IND_7_STRING_H
-#define IND_7_STRING_H
+#ifndef OOP_3_2_STRING_H
+#define OOP_3_2_STRING_H
 
 #include <iostream>
 
@@ -37,4 +37,4 @@ private:
     char *m_str;
 };
 
-#endif //IND_7_STRING_H
+#endif //OOP_3_2_STRING_H
