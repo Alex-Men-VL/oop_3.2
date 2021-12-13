@@ -1,22 +1,12 @@
 #include "String.h"
 
-String::String() {
-    m_str = nullptr;
-}
+const char* ERROR_WRONG_INDEX = "Array: Wrong index";
 
-String::String(char str) {
-    m_str = new char[2];
-    m_str[0] = str;
-    m_str[1] = '\0';
-}
-
-String::String(const char* str)
-{
+String::String(const char* str) {
     size_t len = strlen(str);
     m_str = new char[len + 1];
     strncpy(m_str, str, len);
     m_str[len] = '\0';
-
 }
 
 String::String(const String &otherStr)
@@ -108,12 +98,37 @@ bool operator<=(const String &lStr, const String &rStr)
     return strcmp(lStr.m_str, rStr.m_str) <= 0;
 }
 
-char &String::operator[](int index) {
-    return m_str[index];
+const char &String::operator[](int index) {
+    if (index >= 0 && index < strlen(m_str)) {
+        return m_str[index];
+    }
+    throw ERROR_WRONG_INDEX;
 }
 
 std::ostream &operator<<(std::ostream &out, const String &str) {
     return out << str.getStr();
+}
+
+void String::operator+=(char symbol) {
+    char* tmp = new char[2];
+    tmp[0] = symbol;
+    tmp[1] = '\0';
+    String tmpStr(tmp);
+    *this += tmpStr;
+}
+
+
+std::istream &operator>>(std::istream &in, String &str) {
+    str = "";
+    char symbol;
+    while (true) {
+        in.get(symbol);
+        if (symbol == ' ' || symbol == '\n' || symbol == '\0') {
+            if (str.length() == 0) continue;
+            return in;
+        }
+        str += symbol;
+    }
 }
 
 char* String::getStr() const {

@@ -7,89 +7,43 @@ TS setFileName(TS &name) {
 
 template <typename TS>
 TS getInputFileName() {
-    char *iFileName = new char[20];
+    TS inputFileName;
     std::cout << "Enter the name of the input file: ";
-    std::cin >> iFileName;
-    TS inputFileName(iFileName);
+    std::cin >> inputFileName;
     inputFileName = setFileName(inputFileName);
     return inputFileName;
 }
 
 template <typename TS>
 TS getOutputFileName(){
-    char *oFileName = new char[20];
+    TS outputFileName;
     std::cout << "Enter the name of the output file: ";
-    std::cin >> oFileName;
-    TS outputFileName(oFileName);
+    std::cin >> outputFileName;
     outputFileName = setFileName(outputFileName);
     return outputFileName;
-}
-
-template <typename TP, typename TS>
-void addCardOwner(const char *str, const int len, const int personNumber, TP **persons) {
-    int pInfoNumber = 0;
-    bool notSpace = true;
-    char* info = new char[20];
-    int infoLen = 0;
-    for (int i = 0; i < len; i++) {
-        if (str[i] == ' ' && notSpace) {
-            info[infoLen] = '\0';
-            switch(pInfoNumber) {
-                case 0: {
-                    persons[personNumber]->setFirstName(info);
-                    break;
-                }
-                case 1: {
-                    persons[personNumber]->setLastName(info);
-                    break;
-                }
-                case 2: {
-                    persons[personNumber]->setCardNumber(info);
-                    break;
-                }
-            }
-            pInfoNumber++;
-            info = new char[20];
-            infoLen = 0;
-            notSpace = false;
-            continue;
-        } else if (str[i] == ' ') {
-            continue;
-        } else {
-            notSpace = true;
-            info[infoLen] = str[i];
-            infoLen++;
-        }
-    info[infoLen] = '\0';
-    persons[personNumber]->setCardDate(info);
-    }
 }
 
 template <typename T, typename TP, typename TS>
 void setPersonsFromFile(T inputFileName, TP **persons) {
     std::ifstream inputFile;
+    TS firstName;
+    TS lastName;
+    TS cardNumber;
+    TS cardDate;
+    inputFile.open(inputFileName);
+    if (!inputFile) {
+        throw ERROR_FILE_NOT_OPEN;
+    }
 
-    try {
-        inputFile.open(inputFileName);
-        if (!inputFile) {
-            throw ERROR_FILE_NOT_OPEN;
-        }
+    int count;
+    inputFile >> count;
 
-        std::string line;
-        getline(inputFile, line);  // skip the first line
-
-        int personNumber = 0;
-        while (!inputFile.eof()) {
-            persons[personNumber] = new TP();
-            getline(inputFile, line);
-            int len = line.length();
-            const char *cstr = line.c_str();
-            addCardOwner<TP, TS>(cstr, len, personNumber, persons);
-
-            personNumber++;
-        }
-    } catch (const char *error) {
-        std::cerr << error << std::endl;
+    int personNumber = 0;
+    while (personNumber != count) {
+        persons[personNumber] = new TP();
+        inputFile >> lastName >> firstName >> cardNumber >> cardDate;
+        persons[personNumber]->setCardOwner(lastName, firstName, cardNumber, cardDate);
+        personNumber++;
     }
 }
 

@@ -68,27 +68,11 @@ int BankCard<T>::getCardDateLen() const {
 }
 
 template<class T>
-void BankCard<T>::setFirstName(const char* firstName) {
-    T tmp(firstName);
-    m_firstName = tmp;
-}
-
-template<class T>
-void BankCard<T>::setLastName(const char* lastName) {
-    T tmp(lastName);
-    m_lastName = tmp;
-}
-
-template<class T>
-void BankCard<T>::setCardNumber(const char* cardNumber) {
-    T tmp(cardNumber);
-    m_cardNumber = tmp;
-}
-
-template<class T>
-void BankCard<T>::setCardDate(const char* cardDate) {
-    T tmp(cardDate);
-    m_cardDate = tmp;
+void BankCard<T>::setCardOwner(T &lastName, T &firstName, T &cardNumber, T &cardDate) {
+    m_firstName = firstName;
+    m_lastName = lastName;
+    m_cardNumber = cardNumber;
+    m_cardDate = cardDate;
 }
 
 template<class T>

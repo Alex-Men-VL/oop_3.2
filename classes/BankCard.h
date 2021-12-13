@@ -1,11 +1,10 @@
-#ifndef OOP2_PERSON_H
-#define OOP2_PERSON_H
+#ifndef OOP_BANKCARD_H
+#define OOP_BANKCARD_H
 
 #include "String.h"
 
 template <class T>
 class BankCard : public T {
-
     T m_firstName;
     T m_lastName;
     T m_cardNumber;
@@ -26,10 +25,7 @@ public:
     int getCardNumberLen() const;
     int getCardDateLen() const;
 
-    void setFirstName(const char*);
-    void setLastName(const char*);
-    void setCardNumber(const char*);
-    void setCardDate(const char*);
+    void setCardOwner(T&, T&, T&, T&);
 
     bool isLess(const BankCard<T>*) const;
     bool isSameLastNames(const BankCard<T>*) const;
@@ -39,4 +35,4 @@ public:
 
 #include "BankCard.tpp"
 
-#endif //OOP2_PERSON_H
+#endif //OOP_BANKCARD_H

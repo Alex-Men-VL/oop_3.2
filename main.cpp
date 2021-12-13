@@ -14,9 +14,9 @@ int getSolution(T inputFileName, T outputFileName) {
         return 1;
     }
     TP *persons[personsCount];
-    setPersonsFromFile<T, TP, TS>(inputFileName, persons);
 
     try {
+        setPersonsFromFile<T, TP, TS>(inputFileName, persons);
         checkInput<TP, TS>(personsCount, persons);
     } catch (const char* error) {
         std::cerr << error << std::endl;
@@ -35,7 +35,7 @@ int getSolution(T inputFileName, T outputFileName) {
 
 
     int endingCardsNumber = getEndingCardsNumber<TP>(personsCount, persons);
-    std::cout << "TThe number of cards that expire in the current year: " << endingCardsNumber << std::endl;
+    std::cout << "The number of cards that expire in the current year: " << endingCardsNumber << std::endl;
 
     if (isNamesakes<TP>(personsCount, persons)) {
         std::cout << "In the input file there are owners with the same last names, but different names" << std::endl;
