@@ -68,6 +68,14 @@ void String::operator+=(const String &otherStr) {
     strcat(m_str, otherStr.m_str);
 }
 
+void String::operator+=(char symbol) {
+    char* tmp = new char[2];
+    tmp[0] = symbol;
+    tmp[1] = '\0';
+    String tmpStr(tmp);
+    *this += tmpStr;
+}
+
 bool operator==(const String &lStr, const String &rStr)
 {
     return strcmp(lStr.m_str, rStr.m_str) == 0;
@@ -108,15 +116,6 @@ const char &String::operator[](int index) {
 std::ostream &operator<<(std::ostream &out, const String &str) {
     return out << str.getStr();
 }
-
-void String::operator+=(char symbol) {
-    char* tmp = new char[2];
-    tmp[0] = symbol;
-    tmp[1] = '\0';
-    String tmpStr(tmp);
-    *this += tmpStr;
-}
-
 
 std::istream &operator>>(std::istream &in, String &str) {
     str = "";
