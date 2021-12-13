@@ -1,6 +1,6 @@
 #include "fileTools.h"
 #include "functions.h"
-#include "InsertionSort.h"
+#include "insertionSort.h"
 
 const char* ERROR_NOT_CORRECT_ARGUMENT = "Provide the number 1 or 2 as a command line argument";
 
